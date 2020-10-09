@@ -40,7 +40,7 @@ namespace UnitTests.K2Bridge.Visitors
 
         // Time RangeClause Query Tests
         [TestCase(
-            ExpectedResult = "MyField >= fromUnixTimeMilli(0) and MyField <= fromUnixTimeMilli(10)",
+            ExpectedResult = "MyField >= unixtime_milliseconds_todatetime(0) and MyField <= unixtime_milliseconds_todatetime(10)",
             TestName="Visit_WithValidRangeBetweenInts_ReturnsValidResponse")]
         public string TestValidTimeRangeClauseVisitNumberBetweenTwoInts()
         {
@@ -48,7 +48,7 @@ namespace UnitTests.K2Bridge.Visitors
         }
 
         [TestCase(
-            ExpectedResult = "MyField >= fromUnixTimeMilli(0) and MyField <= fromUnixTimeMilli(10.10)",
+            ExpectedResult = "MyField >= unixtime_milliseconds_todatetime(0) and MyField <= unixtime_milliseconds_todatetime(10.10)",
             TestName="Visit_WithValidTimeRangeBetweenNumbers_ReturnsValidResponse")]
         public string TestValidTimeRangeClauseVisitNumberBetweenIntAndDecimal()
         {
@@ -56,7 +56,7 @@ namespace UnitTests.K2Bridge.Visitors
         }
 
         [TestCase(
-            ExpectedResult = "MyField >= fromUnixTimeMilli(10.10) and MyField <= fromUnixTimeMilli(20.20)",
+            ExpectedResult = "MyField >= unixtime_milliseconds_todatetime(10.10) and MyField <= unixtime_milliseconds_todatetime(20.20)",
             TestName="Visit_WithValidTimeRangeBetweenDecimals_ReturnsValidResponse")]
         public string TestValidTimeRangeClauseVisitNumberBetweenTwoDecimalss()
         {
@@ -64,7 +64,7 @@ namespace UnitTests.K2Bridge.Visitors
         }
 
         [TestCase(
-            ExpectedResult = "MyField >= todatetime('2020-01-01 00:00') and MyField < todatetime('2020-02-22 10:00')",
+            ExpectedResult = "MyField >= todatetime(\"2020-01-01 00:00\") and MyField < todatetime(\"2020-02-22 10:00\")",
             TestName = "Visit_ValidDateRange_ReturnsValidResponse")]
         public string TestValidDateRange_ReturnsValidResponse()
         {
